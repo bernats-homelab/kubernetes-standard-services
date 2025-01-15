@@ -1,1 +1,4 @@
 # Values go here
+spec:
+  destination:
+    server: https://kubernetes.default.svc

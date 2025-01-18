@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     chart: cert-manager
-    repoURL: https://github.com/argoproj/argocd-example-apps
+    repoURL: charts.jetstack.io
     targetRevision: 1.16.2
     helm:
       # TODO: Understand how to specify a separate values file in this case

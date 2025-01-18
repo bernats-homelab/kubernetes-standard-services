@@ -12,9 +12,11 @@ spec:
     repoURL: https://github.com/argoproj/argocd-example-apps
     targetRevision: 1.16.2
     helm:
+      # TODO: Understand how to specify a separate values file in this case
       releaseName: cert-manager
-      valueFiles:
-      - cert-manager-values.yaml
+      valuesObject:
+        crds:
+          enabled: true
   destination:
     namespace: cert-manager
     server: {{ .Values.spec.destination.server }}

@@ -14,7 +14,7 @@ spec:
       helm:
         releaseName: cert-manager
         valueFiles:
-          - $values/values/cert-manager.yaml
+          - $values/benats-standard-services/values/cert-manager.yaml
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

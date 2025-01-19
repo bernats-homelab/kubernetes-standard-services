@@ -16,7 +16,7 @@ spec:
       releaseName: ingress-nginx
   destination:
     namespace: ingress-nginx
-    server: {{ .Values.argocdDestionationServer }}
+    server: {{ .Values.argocdDestinationServer }}
   syncPolicy:
     automated:
       selfHeal: true

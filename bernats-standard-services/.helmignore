@@ -21,3 +21,6 @@
 .idea/
 *.tmproj
 .vscode/
+
+# Separate directory for values files for each service to make managing Argo easier
+values/

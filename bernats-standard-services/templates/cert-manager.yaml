@@ -19,7 +19,7 @@ spec:
           enabled: true
   destination:
     namespace: cert-manager
-    server: {{ .Values.spec.destination.server }}
+    server: {{ .Values.argocdDestinationServer }}
   syncPolicy:
     automated:
       selfHeal: true

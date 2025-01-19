@@ -16,7 +16,7 @@ spec:
       releaseName: kube-prometheus-stack
   destination:
     namespace: monitoring
-    server: {{ .Values.spec.destination.server }}
+    server: {{ .Values.argocdDestinationServer }}
   syncPolicy:
     automated:
       selfHeal: true

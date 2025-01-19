@@ -1,3 +1,1 @@
-spec:
-  destination:
-    server: https://kubernetes.default.svc
+argocdDestinationServer: https://kubernetes.default.svc

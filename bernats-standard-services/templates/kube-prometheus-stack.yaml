@@ -12,7 +12,6 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 68.2.1
     helm:
-      # TODO: Understand how to specify a separate values file in this case
       releaseName: kube-prometheus-stack
   destination:
     namespace: monitoring

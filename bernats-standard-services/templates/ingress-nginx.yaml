@@ -12,7 +12,6 @@ spec:
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: 4.12.0
     helm:
-      # TODO: Understand how to specify a separate values file in this case
       releaseName: ingress-nginx
   destination:
     namespace: ingress-nginx

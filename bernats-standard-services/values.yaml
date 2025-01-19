@@ -1,1 +1,3 @@
 argocdDestinationServer: https://kubernetes.default.svc
+
+ingressHostname: 192.168.1.21.nip.io

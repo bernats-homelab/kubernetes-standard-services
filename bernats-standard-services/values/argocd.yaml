@@ -1,0 +1,8 @@
+configs:
+  cm:
+    "timeout.reconciliation": "10s"
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx

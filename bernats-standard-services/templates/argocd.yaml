@@ -13,6 +13,11 @@ spec:
       targetRevision: 7.7.22
       helm:
         releaseName: argocd
+        valueFiles:
+          - $values/bernats-standard-services/values/argocd.yaml
+        parameters:
+          - name: server.ingress.hostname
+            value: argocd.{{ .Values.ingressHostname }}
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

@@ -1,6 +1,8 @@
 configs:
+  params:
+    server.insecure: true
   cm:
-    "timeout.reconciliation": "10s"
+    timeout.reconciliation: "10s"
 
 server:
   ingress:

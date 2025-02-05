@@ -3,5 +3,6 @@ crds:
 
 prometheus:
   enabled: true
-  serviceMonitor:
+  servicemonitor:
     enabled: true
+    namespace: monitoring

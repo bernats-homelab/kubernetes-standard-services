@@ -3,6 +3,16 @@ configs:
     server.insecure: true
   cm:
     timeout.reconciliation: "10s"
+    resource.exclusions: |
+      - apiGroups:
+          - kyverno.io
+        kinds:
+          - AdmissionReport
+          - BackgroundScanReport
+          - ClusterAdmissionReport
+          - ClusterBackgroundScanReport
+        clusters:
+          - '*'
 
 server:
   ingress:

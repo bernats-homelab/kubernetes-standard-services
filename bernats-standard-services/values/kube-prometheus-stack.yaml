@@ -18,15 +18,16 @@ grafana:
             path: /var/lib/grafana/dashboards/default
 
   dashboards:
-    argocd-operational:
-      gnetId: 19993
-      revision: 3
-      datasource: Prometheus
-    argocd-notifications:
-      gnetId: 19975
-      revision: 3
-      datasource: Prometheus
-    argocd-application:
-      gnetId: 19974
-      revision: 3
-      datasource: Prometheus
+    default:
+      argocd-operational:
+        gnetId: 19993
+        revision: 3
+        datasource: Prometheus
+      argocd-notifications:
+        gnetId: 19975
+        revision: 3
+        datasource: Prometheus
+      argocd-application:
+        gnetId: 19974
+        revision: 3
+        datasource: Prometheus

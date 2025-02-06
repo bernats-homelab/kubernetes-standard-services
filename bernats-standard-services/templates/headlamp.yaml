@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: headlamp
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://headlamp-k8s.github.io/headlamp
+      chart: headlamp
+      targetRevision: 0.28.0
+      helm:
+        releaseName: headlamp
+        valueFiles:
+          - $values/bernats-standard-services/values/headlamp.yaml
+    - repoURL: {{ .Values.sourceRepoUrl }}
+      targetRevision: main
+      ref: values
+  destination:
+    namespace: kube-systemn
+    server: {{ .Values.argocdDestinationServer }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+    syncOptions:
+    - CreateNamespace=true

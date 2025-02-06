@@ -15,6 +15,9 @@ spec:
         releaseName: headlamp
         valueFiles:
           - $values/bernats-standard-services/values/headlamp.yaml
+        parameters:
+          name: config.baseUrl
+          value: headlamp.{{ .Values.ingressHostname }}
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

@@ -1,6 +1,9 @@
 config:
   pluginsDir: /build/plugins
 
+ingress:
+  enabled: true
+
 initContainers:
   - command:
       - /bin/sh

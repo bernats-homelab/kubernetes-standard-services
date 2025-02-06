@@ -1,2 +1,10 @@
 capabilities:
+  configurationScan: enable
   continuousScan: enable
+  nodeScan: enable
+
+  vulnerabilityScan: enable
+  relevancy: enable
+
+  runtimeObservability: enable
+  networkPolicyService: enable

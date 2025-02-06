@@ -16,8 +16,8 @@ spec:
         valueFiles:
           - $values/bernats-standard-services/values/keycloak.yaml
         parameters:
-          name: ingress.hostname
-          value: keycloak.{{ .Values.ingressHostname }}
+          - name: ingress.hostname
+            value: keycloak.{{ .Values.ingressHostname }}
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

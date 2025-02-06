@@ -15,9 +15,13 @@ spec:
         releaseName: headlamp
         valueFiles:
           - $values/bernats-standard-services/values/headlamp.yaml
-        parameters:
-          name: config.baseUrl
-          value: headlamp.{{ .Values.ingressHostname }}
+        valuesObject:
+          ingress:
+            hosts:
+              - host: headlamp.{{ .Values.ingressHostname }}
+                paths:
+                  - path: /
+                    type: ImplementationSpecific
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

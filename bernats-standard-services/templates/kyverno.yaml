@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyverno
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://kyverno.github.io/kyverno
+      chart: kyverno
+      targetRevision: 3.3.4
+      helm:
+        releaseName: kyverno
+        valueFiles:
+          - $values/bernats-standard-services/values/kyverno.yaml
+    - repoURL: {{ .Values.sourceRepoUrl }}
+      targetRevision: main
+      ref: values
+  destination:
+    namespace: kyverno
+    server: {{ .Values.argocdDestinationServer }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true

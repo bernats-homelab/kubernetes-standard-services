@@ -15,6 +15,11 @@ spec:
         releaseName: kube-prometheus-stack
         valueFiles:
           - $values/bernats-standard-services/values/kube-prometheus-stack.yaml
+        valuesObject:
+          grafana:
+            ingress:
+              hosts:
+                - grafana.{{ .Values.ingressHostname }}
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

@@ -15,6 +15,10 @@ initContainers:
       - mountPath: /build/plugins
         name: headlamp-plugins
 
+serviceAccount:
+  create: true
+  name: headlamp
+
 volumeMounts:
   - name: headlamp-plugins
     mountPath: /build/plugins

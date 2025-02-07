@@ -1,4 +1,6 @@
 grafana:
+  defaultDashboardsTimezone: utc-3
+  defaultDashboardsEditable: false
   ingress:
     enabled: true
 
@@ -16,6 +18,8 @@ grafana:
             path: /var/lib/grafana/dashboards/default
 
   dashboards:
+    enabled: true
+    enableNewTablePanelSyntax: true
     default:
       argocd-operational:
         gnetId: 19993
@@ -37,3 +41,6 @@ grafana:
         gnetId: 20510
         revision: 2
         datasource: Prometheus
+      cert-manager:
+        url: https://raw.githubusercontent.com/monitoring-mixins/website/refs/heads/master/assets/cert-manager/dashboards/overview.json
+        token: ""

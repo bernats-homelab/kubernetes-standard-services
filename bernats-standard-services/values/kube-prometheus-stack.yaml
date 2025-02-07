@@ -29,3 +29,11 @@ grafana:
         gnetId: 19974
         revision: 3
         datasource: Prometheus
+      nginx-overview:
+        gnetId: 16677
+        revision: 2
+        datasource: Prometheus
+      nginx-request-handling:
+        gnetId: 20510
+        revision: 2
+        datasource: Prometheus

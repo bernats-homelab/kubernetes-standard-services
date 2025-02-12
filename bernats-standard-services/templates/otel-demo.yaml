@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
+      chart: opentelemetry-demo
+      targetRevision: 0.35.0
+      helm:
+        releaseName: opentelemetry-demo
+    {{/*     valueFiles: */}}
+    {{/*       - $values/bernats-standard-services/values/kube-prometheus-stack.yaml */}}
+    {{/* - repoURL: {{ .Values.sourceRepoUrl }} */}}
+    {{/*   targetRevision: main */}}
+    {{/*   ref: values */}}
+  destination:
+    namespace: opentelemetry-demo
+    server: {{ .Values.argocdDestinationServer }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+    syncOptions:
+    - CreateNamespace=true

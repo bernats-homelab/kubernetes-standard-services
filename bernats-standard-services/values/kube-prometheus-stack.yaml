@@ -18,8 +18,6 @@ grafana:
             path: /var/lib/grafana/dashboards/default
 
   dashboards:
-    enabled: true
-    enableNewTablePanelSyntax: true
     default:
       argocd-operational:
         gnetId: 19993

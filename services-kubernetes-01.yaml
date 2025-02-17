@@ -11,11 +11,12 @@ spec:
     automated:
       prune: true
       selfHeal: true
+      allowEmpty: true
   project: default
   source:
     path: bernats-standard-services
     repoURL: https://github.com/bernats-homelab/kubernetes-standard-services
-    targetRevision: HEAD
+    targetRevision: main
     helm:
       valueFiles:
         - values.yaml

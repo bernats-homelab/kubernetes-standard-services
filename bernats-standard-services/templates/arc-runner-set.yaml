@@ -20,6 +20,10 @@ spec:
             value: {{ .Values.githubOrgUrl }}
           - name: githubConfigSecret
             value: gha-token # Secret will be created manually with a github token
+          - name: controllerServiceAccount.namespace
+            value: arc-systems
+          - name: controllerServiceAccount.name
+            value: arc-gha-rs-controller
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values
@@ -33,3 +37,4 @@ spec:
       allowEmpty: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true # https://www.arthurkoziel.com/fixing-argocd-crd-too-long-error/

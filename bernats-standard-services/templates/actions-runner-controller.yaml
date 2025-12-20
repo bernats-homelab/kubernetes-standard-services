@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arc
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - path: .
+      repoURL: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+      targetRevision: 0.13.0
+      helm:
+        releaseName: arc
+        # valueFiles:
+        #   - $values/bernats-standard-services/values/actions-runner-controller.yaml
+    - repoURL: {{ .Values.sourceRepoUrl }}
+      targetRevision: main
+      ref: values
+  destination:
+    namespace: arc-systems
+    server: {{ .Values.argocdDestinationServer }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+    syncOptions:
+    - CreateNamespace=true

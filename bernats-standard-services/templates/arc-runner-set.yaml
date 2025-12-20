@@ -24,6 +24,8 @@ spec:
             value: arc-systems
           - name: controllerServiceAccount.name
             value: arc-gha-rs-controller
+          - name: minRunners
+            value: 1
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

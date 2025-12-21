@@ -13,17 +13,11 @@ spec:
       targetRevision: 0.13.0
       helm:
         releaseName: arc-runner-set
-        # valueFiles:
-        #   - $values/bernats-standard-services/values/actions-runner-controller.yaml
+        valueFiles:
+          - $values/bernats-standard-services/values/arc-runner-set.yaml
         parameters:
           - name: githubConfigUrl
             value: {{ .Values.githubOrgUrl }}
-          - name: githubConfigSecret
-            value: gha-token # Secret will be created manually with a github token
-          - name: controllerServiceAccount.namespace
-            value: arc-systems
-          - name: controllerServiceAccount.name
-            value: arc-gha-rs-controller
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

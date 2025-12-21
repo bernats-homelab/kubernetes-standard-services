@@ -1,0 +1,5 @@
+githubConfigSecret: gha-token # Secret will be created manually with a github token
+
+controllerServiceAccount:
+  name: arc-gha-rs-controller
+  namespace: arc-systems

@@ -28,3 +28,4 @@ spec:
       allowEmpty: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true # https://www.arthurkoziel.com/fixing-argocd-crd-too-long-error/

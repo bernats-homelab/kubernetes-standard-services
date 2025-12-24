@@ -30,3 +30,8 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true # https://www.arthurkoziel.com/fixing-argocd-crd-too-long-error/
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      jsonPointers:
+        - /webhooks/0/clientConfig/caBundle

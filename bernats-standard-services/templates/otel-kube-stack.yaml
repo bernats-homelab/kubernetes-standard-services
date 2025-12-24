@@ -1,3 +1,4 @@
+# https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-kube-stack
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,7 +11,7 @@ spec:
   sources:
     - repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
       chart: opentelemetry-kube-stack
-      targetRevision: 
+      targetRevision: 0.12.6
       helm:
         releaseName: opentelemetry-stack
         valueFiles:

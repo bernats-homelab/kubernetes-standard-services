@@ -18,6 +18,8 @@ spec:
         parameters:
           - name: server.ingress.hostname
             value: argocd.{{ .Values.ingressHostname }}
+          - name: server.ingress.className
+            value: {{ .Values.ingressClass }}
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values

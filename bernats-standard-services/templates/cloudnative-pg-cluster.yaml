@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cloudnative-pg
+  name: cloudnative-pg-cluster
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,17 +9,17 @@ spec:
   project: default
   sources:
     - repoURL: https://cloudnative-pg.github.io/charts
-      chart: cloudnative-pg
-      targetRevision: 0.27.0
+      chart: cluster
+      targetRevision: 0.5.0
       helm:
-        releaseName: cnpg
+        releaseName: cnpg-database
         valueFiles:
-          - $values/bernats-standard-services/values/cloudnative-pg.yaml
+          - $values/bernats-standard-services/values/cloudnative-pg-cluster.yaml
     - repoURL: {{ .Values.sourceRepoUrl }}
       targetRevision: main
       ref: values
   destination:
-    namespace: cnpg-system
+    namespace: cnpg-database
     server: {{ .Values.argocdDestinationServer }}
   syncPolicy:
     automated:

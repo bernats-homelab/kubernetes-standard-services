@@ -23,11 +23,11 @@ collectors:
           secretKeyRef:
             name: grafana-cloud-auth
             key: GRAFANA_CLOUD_OTLP_ENDPOINT
-      - name: GRAFANA_CLOUD_BASIC_AUTH_HEADER
-        valueFrom:
-          secretKeyRef:
-            name: grafana-cloud-auth
-            key: GRAFANA_CLOUD_BASIC_AUTH_HEADER
+      # - name: GRAFANA_CLOUD_BASIC_AUTH_HEADER
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: grafana-cloud-auth
+      #       key: GRAFANA_CLOUD_BASIC_AUTH_HEADER
     # disable Prometheus scrapping as it assumes the Prometheus Node Exporter and CAdvisor are setup
     scrape_configs_file: ""
     presets:

@@ -59,3 +59,51 @@ The following core services are managed by this repository:
 
 ---
 Maintained by the Bernats organization. Contributions and suggestions welcome!
+
+**Services Interaction Diagram**
+
+Below is a high-level diagram showing how the main running services interact inside the cluster and with external systems.
+
+```mermaid
+graph LR
+	subgraph External
+		GitRepo["Git repository (manifests/Helm)"]
+		GitHub["GitHub (actions / repos)"]
+		Users["Users / Clients"]
+	end
+
+	subgraph Cluster
+		ArgoCD["ArgoCD\n(GitOps controller)"]
+		Ingress["Ingress NGINX\n(HTTP/S routing)"]
+		OTEL["OpenTelemetry Stack\n(traces, metrics, logs)"]
+		CPG["CloudNativePG\n(PostgreSQL operator)"]
+		ARC["Actions Runner Controller\n(self-hosted runners)"]
+		Apps["Workloads / Apps"]
+	end
+
+	GitRepo -->|watches & syncs| ArgoCD
+	ArgoCD -->|deploys/manages| Apps
+	ArgoCD -->|deploys| Ingress
+	ArgoCD -->|deploys| OTEL
+	ArgoCD -->|deploys| CPG
+	ArgoCD -->|deploys| ARC
+
+	Users -->|HTTP/S| Ingress
+	Ingress -->|routes traffic to| Apps
+
+	Apps -->|emit telemetry to| OTEL
+	Ingress -->|emit telemetry to| OTEL
+	ArgoCD -->|emit telemetry to| OTEL
+
+	Apps -->|read/write| CPG
+	ARC -->|provisions runners that run jobs on| Apps
+	ARC -->|communicates with| GitHub
+	Apps -->|interact with external APIs / GitHub| GitHub
+
+	style ArgoCD fill:#f9f,stroke:#333,stroke-width:1px
+	style Ingress fill:#bbf,stroke:#333,stroke-width:1px
+	style OTEL fill:#bfb,stroke:#333,stroke-width:1px
+	style CPG fill:#ffd,stroke:#333,stroke-width:1px
+	style ARC fill:#fdd,stroke:#333,stroke-width:1px
+	style Apps fill:#eee,stroke:#333,stroke-width:1px
+```

@@ -1,0 +1,9 @@
+# https://github.com/cloudnative-pg/charts/blob/main/charts/cluster/examples/basic.yaml
+type: postgresql
+mode: standalone
+version:
+  postgresql: "16"
+cluster:
+  instances: 1
+backups:
+  enabled: false

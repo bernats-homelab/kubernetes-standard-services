@@ -2,7 +2,7 @@ configs:
   params:
     server.insecure: true
   cm:
-    timeout.reconciliation: "30s"
+    timeout.reconciliation: "60s"
     resource.exclusions: |
       - apiGroups:
           - kyverno.io

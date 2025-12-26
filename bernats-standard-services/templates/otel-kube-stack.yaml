@@ -24,7 +24,7 @@ spec:
     server: {{ .Values.argocdDestinationServer }}
   syncPolicy:
     automated:
-      selfHeal: true
+      selfHeal: false
       prune: true
       allowEmpty: true
     syncOptions:
